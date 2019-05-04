@@ -9,6 +9,8 @@
   "author": "Douglas D.",
   "license": "ISC",
   "dependencies": {
-    "rxjs": "^6.3.3"
+    "request": "^2.88.0",
+    "rxjs": "^6.5.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }

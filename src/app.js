@@ -24,7 +24,7 @@ setTimeout(() => {
   source$.subscribe(data => console.log(`Observer 2. ${data}`));
 }, 2500);
 
-setTimeout(()=> {
+setTimeout(() => {
   source$.complete();
   clearInterval(clearId);
 }, 5000);
