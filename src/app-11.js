@@ -11,13 +11,16 @@ const { XMLHttpRequest } = require('xmlhttprequest');
 
 const createXHR = () => new XMLHttpRequest();
 
-
-
+/**
+ * 
+ * @param {*} n 
+ * @param {*} result 
+ */
 const getUserId = (n, result = []) => {
 
     //console.log(n);
 
-    const url = `https://jsonplaceholder.typicode.com/posts/${n}`;
+    const url = `http://localhost:4001/list-data?page=${n}`;
 
     return ajax({
         createXHR,
@@ -26,40 +29,37 @@ const getUserId = (n, result = []) => {
         withCredentials: false,
         method: 'GET'
     }).pipe(
-        mergeMap((d) => {
 
-            result = result.concat(d.response.title);
+        mergeMap(
+            (d) => {
 
-            if (('body' in d.response) && (n < 10))
-                return getUserId(++n, result);
+                result = result.concat(d.response.data);
 
-            return of(result);
+                if (('nextIndex' in d.response))
+                    return getUserId(d.response.nextIndex, result);
 
-        }, null, 1)
+                return of(result);
+
+            }, null, 1)
     );
 }
 
 
 
 
-const createMergeMap = () => {
 
 
-    //setInterval(() => {
 
-    getUserId(1)
-        .subscribe(result => {
-            console.log('<ul>');
-            result.forEach(v => {
-                console.log(`\t<li>${v}</li>`);
-            });
-            console.log('</ul>');
+//setInterval(() => {
+
+getUserId(0)
+    .subscribe(result => {
+        console.log('<ul>');
+        result.forEach(v => {
+            console.log(`\t<li>${v}</li>`);
         });
+        console.log('</ul>');
+    });
 
    // }, 2000);
 
-
-}
-
-
-createMergeMap();

@@ -4,7 +4,7 @@ console.clear();
 
 const { fromEvent, EMPTY } = require('rxjs');
 const { ajax } = require('rxjs/ajax');
-const { mapTo, mergeScan } = require('rxjs/Operators');
+const { mergeScan } = require('rxjs/Operators');
 const Event = require('events').EventEmitter;
 const { XMLHttpRequest } = require('xmlhttprequest');
 
@@ -14,6 +14,9 @@ const createXHR = () => new XMLHttpRequest();
 const moreButton$ = new Event();
 
 
+/**
+ * 
+ */
 fromEvent(moreButton$, 'click')
     .pipe(
 
@@ -24,7 +27,7 @@ fromEvent(moreButton$, 'click')
             if ('nextIndex' in prevAjaxResponse.response) {
                 return ajax({
                     createXHR,
-                    url: `https://jsonplaceholder.typicode.com/posts/${prevAjaxResponse.response.nextIndex}`,
+                    url: `http://localhost:4001/list-data?page=${prevAjaxResponse.response.nextIndex}`,
                     crossDomain: true,
                     withCredentials: false,
                     method: 'GET'
