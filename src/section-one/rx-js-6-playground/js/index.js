@@ -2,7 +2,7 @@ const { range } = require("rxjs");
 const { map } = require("rxjs/operators");
 
 /**
- *
+ * [SomeService description]
  */
 class SomeService {
   getRange() {

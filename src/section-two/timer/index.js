@@ -1,6 +1,6 @@
-
-
-const {timer} = require("rxjs");
+const {
+  timer
+} = require("rxjs");
 
 
 source = timer(0, 1000);

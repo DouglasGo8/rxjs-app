@@ -1,6 +1,8 @@
-const { of, defer } = require("rxjs");
+const {
+  of , defer
+} = require("rxjs");
 
-const factoryOf = n => of(n);
+const factoryOf = n => of (n);
 
 let counter = 0;
 

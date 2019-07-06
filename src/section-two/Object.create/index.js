@@ -1,4 +1,7 @@
-const { range, Observable } = require("rxjs");
+const {
+  range,
+  Observable
+} = require("rxjs");
 
 const emitValue = observer =>
   setInterval(() => {
@@ -13,13 +16,16 @@ const emitWithRange = () => range(0, 3);
 );*/
 
 /**
- *
+ * [evenNumbers description]
+ * @type {[type]}
  */
 const evenNumbers = Observable.create(obs => {
   let value = 0;
 
   const interval = setInterval(() => {
-    if (value % 2 === 0) obs.next(value);
+    if (value % 2 === 0) {
+      obs.next(value);
+    }
     value++;
   }, 1000);
 
@@ -33,6 +39,6 @@ const evenNumbers = Observable.create(obs => {
 const subs = evenNumbers.subscribe(console.log);
 
 
-setTimeout(()=>{
-    subs.unsubscribe();
+setTimeout(() => {
+  subs.unsubscribe();
 }, 10000)
