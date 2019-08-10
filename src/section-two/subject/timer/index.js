@@ -10,7 +10,7 @@ const max = 1000;
 let counter = 0;
 
 /**
- *
+ * 
  */
 fromEvent($button, "click").subscribe(v => {
   counter += v;

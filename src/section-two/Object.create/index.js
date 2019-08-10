@@ -1,19 +1,23 @@
 const {
-  range,
+  //range,
   Observable
 } = require("rxjs");
 
+/**
+ * 
+ * @param {*} observer 
+ */
 const emitValue = observer =>
   setInterval(() => {
     observer.next("hi");
     // observer.complete();
-  }, 1000);
+  }, 1000)
 
-const emitWithRange = () => range(0, 3);
+// const emitWithRange = () => range(0, 3);
 
-/*Observable.create(emitValue).subscribe(console.log, console.warn, () =>
+Observable.create(emitValue).subscribe(console.log, console.warn, () =>
   console.log("Completed")
-);*/
+);
 
 /**
  * [evenNumbers description]
