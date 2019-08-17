@@ -5,8 +5,7 @@ const {
   switchMapTo,
   startWith,
   scan,
-  takeWhile,
-  finalize
+  takeWhile
 } = require("rxjs/operators");
 
 console.clear();
@@ -20,9 +19,8 @@ const countDown$ = interval(1000).pipe(
 fromEvent($buttonEmmiter, "click")
   .pipe(
     switchMapTo(countDown$),
-    takeWhile(val => val >= 0),
-    finalize(() => {return "Done"})
+    takeWhile(val => val >= 0)
   )
   .subscribe(console.log);
 
-$buttonEmmiter.emit("click", "");
+$buttonEmmiter.emit("click");
