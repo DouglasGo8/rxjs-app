@@ -1,4 +1,4 @@
-const { fromEvent, empty } = require("rxjs");
+const { fromEvent, empty, of } = require("rxjs");
 const { mergeScan } = require("rxjs/operators");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const emitter = require("events").EventEmitter;
@@ -16,23 +16,21 @@ fromMoreEvents$
     mergeScan(
       (prevAjaxResponse, next) => {
         if ("nextIndex" in prevAjaxResponse.response) {
-          return ajax.get({
+          return ajax({
             url: `http://127.0.0.1:4001/list-data?page=${prevAjaxResponse.response.nextIndex}`,
-            createXHR,
-            crossDomain: true,
-            body: {},
-            responseType: "json",
-            method: "GET"
+            createXHR
           });
         }
         return empty();
       },
-      { response: { nextIndex: 1 } },
-      1
+      { response: { nextIndex: 1 } }, // Initial acc value
+      1 // Maximum concurrency, 1 - to prevent race conditions
     )
   )
-  .subscribe(response => {
-    response.data.data.forEach(item => console.log(item));
+  .subscribe(d => {
+    d.response.data.forEach(item => {
+      console.log(item);
+    });
   }, console.error);
 
-$button.emit("click", "value");
+$button.emit("click");
