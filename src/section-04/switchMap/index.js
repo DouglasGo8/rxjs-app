@@ -7,7 +7,7 @@ const { debounceTime, switchMap } = require("rxjs/operators");
 console.clear();
 
 const wikiUrl = "https://en.wikipedia.org/w/api.php";
-const words = ["love", "hate", "gado", "petralha", "sindicato"];
+const words = ["drab", "majesty", "unkown", "to", "tje", "I"];
 
 const makeWikeSearch = async value => {
   return axios({
@@ -34,5 +34,5 @@ fromEvent($inputEmmiter, "keyup")
   });
 
 setInterval(() => {
-  $inputEmmiter.emit("keyup", words[Math.floor(Math.random() * Math.floor(5))]);
+  $inputEmmiter.emit("keyup", words[Math.floor(Math.random() * Math.floor(words.length))]);
 }, 1000);
