@@ -1,7 +1,7 @@
 # RxJS
 
-https://github.com/PacktPublishing/Hands-on-RxJS-for-Web-development
+<https://github.com/PacktPublishing/Hands-on-RxJS-for-Web-development />
 
 # StopOn
 
- -> Section4 -> section 4.3
+ -> Section4 -> section 4.6
