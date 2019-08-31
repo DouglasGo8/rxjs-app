@@ -71,7 +71,7 @@ app.get('/request-data', (req, res) => {
 
     setTimeout(() => {
         responseReady[requestAnswer.dataId] = true;
-    }, 3000);
+    }, 5000);
 
     res.status(200)
         .send(requestAnswer);
