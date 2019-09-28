@@ -49,4 +49,5 @@ const getItems = (url, maxCounter, dataId) => {
 /**
  *  recursively calls
  */
-getItems(requestUrl, 5, null).subscribe(console.log, console.warn);
+getItems(requestUrl, 5, null)
+  .subscribe(console.log, console.warn);
